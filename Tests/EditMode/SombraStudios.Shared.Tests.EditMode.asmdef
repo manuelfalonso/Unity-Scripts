@@ -5,7 +5,9 @@
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
         "SombraStudios.Shared.Structs",
-        "SombraStudios.Shared.AI"
+        "SombraStudios.Shared.AI",
+        "SombraStudios.Shared.Gameplay.Plinko",
+        "SombraStudios.Shared.Gameplay.Plinko.Editor"
     ],
     "includePlatforms": [
         "Editor"

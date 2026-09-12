@@ -23,6 +23,7 @@ AnimatorParameterReferenceSOEditor	class	Editor	SombraStudios.Shared.Animations.
 AnimatorStateObjectPreview	class	ObjectPreview	SombraStudios.Shared.Animations.Editor	Animations/Editor/AnimatorStateObjectPreview.cs	UNITY_EDITOR	Provides a custom preview for AnimatorState objects in the Unity Editor
 APIHelper	class	-	SombraStudios.Shared.Services.WebAPI	Services/WebAPI/APIHelper.cs	-	Example API Get call
 ApplePhone	class	ILightningPhone	SombraStudios.Shared.Examples.Patterns.Structural.Adapter.Object	Examples/Patterns/Structural/Adapter/Object/ApplePhone.cs	-	-
+ArcSegment	struct	-	SombraStudios.Shared.Gameplay.Plinko	Gameplay/Plinko/ArcSegment.cs	-	One ballistic hop: the ball leaves Origin with LaunchVelocity and follows a parabola under Gravity for Duration seconds
 AssetFile<T>	class	Object	SombraStudios.Shared.Utility.Resources	Utility/Resources/AssetFile.cs	-	-
 AssetOnlyAttribute	class	PropertyAttribute	SombraStudios.Shared.Attributes	Attributes/AssetOnlyAttribute.cs	-	Attribute used to mark a property as editable only within assets, not with scene objects
 AssetOnlyDrawer	class	PropertyDrawer	SombraStudios.Shared.Attributes.Editor	Attributes/Editor/AssetOnlyDrawer.cs	UNITY_EDITOR	Custom property drawer for the AssetOnlyAttribute
@@ -130,6 +131,7 @@ Description	class	MonoBehaviour	SombraStudios.Shared.Utility	Utility/Description
 DescriptionSO	class	ScriptableObject	SombraStudios.Shared.ScriptableObjects	ScriptableObjects/DescriptionSO.cs	-	This is a base ScriptableObject that adds a description field
 DestructibleBehaviour	class	MonoBehaviour	SombraStudios.Shared.Gameplay.Behaviours.Destructible	Gameplay/Behaviours/Destructible/DestructibleBehaviour.cs	-	Helper component that spawns a prefab game object when the Destroy function is called
 DestructibleBehaviourSO	class	ScriptableObject	SombraStudios.Shared.Gameplay.Behaviours.Destructible	Gameplay/Behaviours/Destructible/DestructibleBehaviourSO.cs	-	-
+DeterministicRandom	class	-	SombraStudios.Shared.Gameplay.Plinko	Gameplay/Plinko/DeterministicRandom.cs	-	Small, allocation-free, seeded pseudo random number generator with a stable algorithm
 DevelopmentBuildConditionSO	class	ConditionSO	SombraStudios.Shared.ScriptableObjects.Conditions	ScriptableObjects/Conditions/DevelopmentBuildConditionSO.cs	-	Represents a condition that evaluates whether the application is running in a development build
 Direction	enum	-	SombraStudios.Shared.Extensions	Extensions/Direction.cs	-	A single direction along one of a transform's local axes
 Direction	enum	-	SombraStudios.Shared.Utility	Utility/DotProductValidator.cs	-	Enumeration of possible Vector3 directions
@@ -431,6 +433,38 @@ PlayerMovement2DTopDown	class	MonoBehaviour	SombraStudios.Shared.Gameplay.Player
 PlayerMoveOnSphere	class	MonoBehaviour	SombraStudios.Shared.Gameplay.PlayerMovement3D	Gameplay/PlayerMovement3D/PlayerMoveOnSphere.cs	CINEMACHINE	Move an object with Input around a SphereCollider
 PlayerStats	struct	-	StyleSheet	CodeStyle.cs	-	-
 PlayQuickSound	class	MonoBehaviour	SombraStudios.Shared.Audio	Audio/PlayQuickSound.cs	-	Play a simple sound using PlayOneShot with volume and randomized pitch
+PlinkoBakeReport	class	-	SombraStudios.Shared.Gameplay.Plinko	Gameplay/Plinko/PlinkoBakeReport.cs	-	What a bake produced, and everything it could not produce
+PlinkoBakeResult	class	-	SombraStudios.Shared.Gameplay.Plinko	Gameplay/Plinko/PlinkoSolver.cs	-	Everything one bake produced
+PlinkoBallPlayer	class	MonoBehaviour	SombraStudios.Shared.Gameplay.Plinko	Gameplay/Plinko/PlinkoBallPlayer.cs	-	Plays one recorded PlinkoPath back by moving a transform along its ballistic arcs
+PlinkoBoard	class	MonoBehaviour	SombraStudios.Shared.Gameplay.Plinko	Gameplay/Plinko/PlinkoBoard.cs	-	Scene facing adapter for a deterministic Plinko board
+PlinkoBoardConfigSO	class	ScriptableObject	SombraStudios.Shared.Gameplay.Plinko	Gameplay/Plinko/PlinkoBoardConfigSO.cs	-	Optional asset holding a hand placed layout and its simulation settings, for authoring board variants
+PlinkoBoardConfigSOEditor	class	Editor	SombraStudios.Shared.Gameplay.Plinko.Editor	Gameplay/Plinko/Editor/PlinkoBoardConfigSOEditor.cs	-	Adds a bake button to a Plinko board config, so a designer can turn a layout into a path asset without entering Play mode or writing a sc...
+PlinkoBounceConfig	class	-	SombraStudios.Shared.Gameplay.Plinko	Gameplay/Plinko/PlinkoBounceConfig.cs	-	How a peg or wall throws the ball back: a real reflection, plus the bounded scatter that makes two drops down the same board diverge
+PlinkoCatchPoint	struct	-	SombraStudios.Shared.Gameplay.Plinko	Gameplay/Plinko/PlinkoLayout.cs	-	A catch point: the horizontal mouth a Drop Token falls into to end its drop
+PlinkoContact	struct	-	SombraStudios.Shared.Gameplay.Plinko	Gameplay/Plinko/PlinkoPath.cs	-	What the token struck at a point along its drop
+PlinkoDropFailure	enum	-	SombraStudios.Shared.Gameplay.Plinko	Gameplay/Plinko/PlinkoDropSimulator.cs	-	Why a simulated drop was thrown away
+PlinkoDropOutcome	struct	-	SombraStudios.Shared.Gameplay.Plinko	Gameplay/Plinko/PlinkoDropSimulator.cs	-	The outcome of one simulated drop, without the recording
+PlinkoDropSimulator	class	-	SombraStudios.Shared.Gameplay.Plinko	Gameplay/Plinko/PlinkoDropSimulator.cs	-	Simulates one drop of the token through a layout, bouncing off pegs and walls until it falls into a catch point
+PlinkoGenerationConfig	class	-	SombraStudios.Shared.Gameplay.Plinko	Gameplay/Plinko/PlinkoGenerationConfig.cs	-	How many drops to simulate, how many to keep per entry and catch point pair, and what makes two kept drops different enough to both be wo...
+PlinkoHash	class	-	SombraStudios.Shared.Gameplay.Plinko	Gameplay/Plinko/PlinkoHash.cs	-	Produces a signature over a layout and its simulation settings, so baked path data can be checked against the board it was baked from
+PlinkoLayout	class	-	SombraStudios.Shared.Gameplay.Plinko	Gameplay/Plinko/PlinkoLayout.cs	-	A hand placed Plinko board: where the pegs, entries, catch points and walls actually are
+PlinkoLayoutGenerator	class	-	SombraStudios.Shared.Gameplay.Plinko	Gameplay/Plinko/PlinkoLayoutGenerator.cs	-	Builds the peg, entry and catch point lists for common board shapes
+PlinkoLayoutPreset	enum	-	SombraStudios.Shared.Gameplay.Plinko	Gameplay/Plinko/PlinkoBoard.cs	-	Which built in layout a PlinkoBoard should build when no layout asset is supplied
+PlinkoLayoutSnapshot	class	-	SombraStudios.Shared.Gameplay.Plinko	Gameplay/Plinko/PlinkoLayoutSnapshot.cs	-	A flat, array backed copy of a layout, taken once before a bake and read by the tracer's inner loop
+PlinkoPath	class	-	SombraStudios.Shared.Gameplay.Plinko	Gameplay/Plinko/PlinkoPath.cs	-	One complete simulated drop: every ballistic arc between bounces, every contact along the way, and the catch point it ends in
+PlinkoPathSet	class	-	SombraStudios.Shared.Gameplay.Plinko	Gameplay/Plinko/PlinkoPathSet.cs	-	The baked drops, indexed by entry and catch point
+PlinkoPathSetAssetTests	class	-	SombraStudios.Shared.Tests.Plinko	Tests/EditMode/Plinko/PlinkoPathSetAssetTests.cs	-	Covers baking a path set into an asset and loading it back: the stored drops must replay identically to the ones that were simulated, and...
+PlinkoPathSetBaker	class	-	SombraStudios.Shared.Gameplay.Plinko.Editor	Gameplay/Plinko/Editor/PlinkoPathSetBaker.cs	-	Runs a Plinko bake and writes the result to a PlinkoPathSetSO asset
+PlinkoPathSetBakerTests	class	-	SombraStudios.Shared.Tests.Plinko	Tests/EditMode/Plinko/PlinkoPathSetBakerTests.cs	-	Covers the Editor bake: writing a path set to a real asset, reading it back off disk, and playing it through a board without simulating
+PlinkoPathSetSO	class	ScriptableObject	SombraStudios.Shared.Gameplay.Plinko	Gameplay/Plinko/PlinkoPathSetSO.cs	-	A baked path set stored as an asset, together with the board it was baked from
+PlinkoPenetrationTests	class	-	SombraStudios.Shared.Tests.Plinko	Tests/EditMode/Plinko/PlinkoPenetrationTests.cs	-	Guards the one thing a player notices immediately: the token must never pass through a peg
+PlinkoSimConfig	class	-	SombraStudios.Shared.Gameplay.Plinko	Gameplay/Plinko/PlinkoSimConfig.cs	-	The ball and the simulation budget: size, gravity, launch speed, and how long a drop may go on
+PlinkoSolver	class	-	SombraStudios.Shared.Gameplay.Plinko	Gameplay/Plinko/PlinkoSolver.cs	-	Runs the drop simulation many times over a layout and keeps a spread of distinct paths for every entry and catch point pair
+PlinkoSolverTests	class	-	SombraStudios.Shared.Tests.Plinko	Tests/EditMode/Plinko/PlinkoSolverTests.cs	-	Covers the deterministic Plinko drop simulator: layout geometry, bounce reflection, the simulation itself, and the baked path set
+PlinkoTraceOutcome	enum	-	SombraStudios.Shared.Gameplay.Plinko	Gameplay/Plinko/PlinkoTracer.cs	-	What ended a traced arc
+PlinkoTracer	class	-	SombraStudios.Shared.Gameplay.Plinko	Gameplay/Plinko/PlinkoTracer.cs	-	Marches a ballistic arc forward through a layout and reports the first peg, wall or catch point it reaches
+PlinkoTraceResult	struct	-	SombraStudios.Shared.Gameplay.Plinko	Gameplay/Plinko/PlinkoTracer.cs	-	The first thing a traced arc reached
+PlinkoWall	struct	-	SombraStudios.Shared.Gameplay.Plinko	Gameplay/Plinko/PlinkoLayout.cs	-	A reflective line segment: an outer wall, or one edge of a side shape
 PointerHandlers	class	MonoBehaviour	SombraStudios.Shared.UI	UI/PointerHandlers.cs	-	Unity Pointer handlers interfaces for UI mouse events
 PredefinedAssemblyUtil	class	-	SombraStudios.Shared.Patterns.Behavioural.Observer.EventBus	Patterns/Behavioural/Observer/EventBus/PredefinedAssemblyUtil.cs	-	A utility class, PredefinedAssemblyUtil, provides methods to interact with predefined assemblies
 PredicateExample	class	MonoBehaviour	SombraStudios.Shared.Examples.Delegates	Examples/Delegates/PredicateExample.cs	-	Store a function in a variable with Predicate
