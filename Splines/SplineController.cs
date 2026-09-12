@@ -1,4 +1,3 @@
-#if UNITY_SPLINES
 using SombraStudios.Shared.Extensions;
 using System;
 using UnityEngine;
@@ -17,26 +16,61 @@ namespace SombraStudios.Shared.Splines
     public class SplineController : MonoBehaviour
     {
         [Header("References")]
+        [Tooltip("The spline this object travels along.")]
         [SerializeField] private SplineContainer _splineContainer = null;
+
+        [Tooltip("The animator driving the movement. Resolved from this GameObject when left empty.")]
         [SerializeField] private SplineAnimate _splineAnimation = null;
 
         [Header("Scale")]
+        [Tooltip("Drive the object's local scale from the curve below while it travels.")]
         [SerializeField] private bool _animateScale = false;
+
+        [Tooltip("Scale over the animation's normalized time. The curve's own time range is remapped onto 0-1.")]
         [SerializeField] private AnimationCurve _scaleCurve = null;
 
         [Header("Debug")]
+        [Tooltip("Log every animation event to the console.")]
         [SerializeField] private bool _showLogs = false;
+
+        [Tooltip("When off, Play, Stop and Reset are ignored.")]
         [SerializeField] private bool _isActive = true;
 
+        /// <summary>
+        /// Gets or sets whether this controller responds to play, stop and reset requests.
+        /// </summary>
         public bool IsActive { get => _isActive; set => _isActive = value; }
 
-        // EVENTS
+        /// <summary>
+        /// Raised after the animation starts.
+        /// </summary>
         public event Action AnimationStarted;
+
+        /// <summary>
+        /// Raised on every animation step, carrying the current position, rotation and local scale.
+        /// </summary>
         public event Action<Vector3, Quaternion, Vector3> AnimationUpdated;
+
+        /// <summary>
+        /// Raised after the animation is paused.
+        /// </summary>
         public event Action AnimationStopped;
-        public event Action AnimationReseted;
+
+        /// <summary>
+        /// Raised after the animation is restarted from the beginning.
+        /// </summary>
+        public event Action AnimationReset;
+
+        /// <summary>
+        /// Raised once the animation reaches the end of the spline.
+        /// </summary>
         public event Action AnimationCompleted;
 
+
+        private void Awake()
+        {
+            this.EnsureComponent(ref _splineAnimation);
+        }
 
         private void OnEnable()
         {
@@ -47,10 +81,8 @@ namespace SombraStudios.Shared.Splines
 
         private void Start()
         {
-            this.EnsureComponent(ref _splineAnimation);
-
             if (_splineAnimation == null) { return; }
-            if (_splineAnimation.PlayOnAwake == true) { OnAnimationStarted(); }
+            if (_splineAnimation.PlayOnAwake) { OnAnimationStarted(); }
         }
 
         private void OnDisable()
@@ -74,14 +106,14 @@ namespace SombraStudios.Shared.Splines
         /// <summary>
         /// Plays current Animation from the normalized <paramref name="progressionValue"/> time
         /// </summary>
-        /// <param name="progressionValue"></param>
+        /// <param name="progressionValue">Where to start, from 0 at the spline's beginning to 1 at its end.</param>
         public void PlayAnimation(float progressionValue)
         {
-            if (_splineContainer == null) { return; }
+            if (_splineAnimation == null) { return; }
             if (!_isActive) { return; }
-            if (progressionValue <0 || progressionValue > 1)
+            if (progressionValue < 0 || progressionValue > 1)
             {
-                Debug.LogWarning($"Progression value must be normalized between 0 and 1.", this);
+                Debug.LogWarning("Progression value must be normalized between 0 and 1.", this);
                 return;
             }
             _splineAnimation.NormalizedTime = progressionValue;
@@ -115,8 +147,10 @@ namespace SombraStudios.Shared.Splines
         private void UpdateScale()
         {
             if (!_animateScale) { return; }
-            if (_scaleCurve.keys.Length == 0) { return; }
+            if (_scaleCurve == null || _scaleCurve.keys.Length == 0) { return; }
 
+            // The curve's own time range is remapped onto the animation's normalized time, so a curve
+            // authored over any span still spans the whole spline.
             var lerpInitialValue = _scaleCurve.keys[0].time;
             var lerpFinalValue = _scaleCurve.keys[_scaleCurve.length - 1].time;
             var lerpTime = _splineAnimation.NormalizedTime;
@@ -128,45 +162,44 @@ namespace SombraStudios.Shared.Splines
             transform.localScale = newScale;
         }
 
-        #region Events
+
         private void OnAnimationStarted()
         {
             AnimationStarted?.Invoke();
             if (_showLogs)
-                Utility.Loggers.Logger.Log($"AnimationStarted", this);
+                Utility.Loggers.Logger.Log("AnimationStarted", this);
         }
 
         private void OnAnimationUpdated(Vector3 position, Quaternion rotation)
         {
+            if (!_isActive) { return; }
             UpdateScale();
             AnimationUpdated?.Invoke(position, rotation, transform.localScale);
             if (_showLogs)
-                Utility.Loggers.Logger.Log($"AnimationUpdated", this);
+                Utility.Loggers.Logger.Log("AnimationUpdated", this);
 
-            if (_splineAnimation.NormalizedTime == 1f) { OnAnimationCompleted(); }
+            if (_splineAnimation.NormalizedTime >= 1f) { OnAnimationCompleted(); }
         }
 
         private void OnAnimationStopped()
         {
             AnimationStopped?.Invoke();
             if (_showLogs)
-                Utility.Loggers.Logger.Log($"AnimationStopped", this);
+                Utility.Loggers.Logger.Log("AnimationStopped", this);
         }
 
         private void OnAnimationReseted()
         {
-            AnimationReseted?.Invoke();
+            AnimationReset?.Invoke();
             if (_showLogs)
-            Utility.Loggers.Logger.Log($"AnimationReseted", this);
+                Utility.Loggers.Logger.Log("AnimationReseted", this);
         }
 
         private void OnAnimationCompleted()
         {
             AnimationCompleted?.Invoke();
             if (_showLogs)
-                Utility.Loggers.Logger.Log($"AnimationCompleted", this);
+                Utility.Loggers.Logger.Log("AnimationCompleted", this);
         }
-        #endregion
     }
 }
-#endif

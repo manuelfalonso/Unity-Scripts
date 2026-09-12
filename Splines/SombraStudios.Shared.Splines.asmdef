@@ -12,7 +12,15 @@
     "overrideReferences": false,
     "precompiledReferences": [],
     "autoReferenced": true,
-    "defineConstraints": [],
-    "versionDefines": [],
+    "defineConstraints": [
+        "UNITY_SPLINES"
+    ],
+    "versionDefines": [
+        {
+            "name": "com.unity.splines",
+            "expression": "",
+            "define": "UNITY_SPLINES"
+        }
+    ],
     "noEngineReferences": false
 }
