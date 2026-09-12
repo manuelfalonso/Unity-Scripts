@@ -18,3 +18,5 @@
   href: UnityMessages.md
 - name: VFX with Scriptable Objects
   href: VFXPropertySO.md
+- name: Code Style Sheet
+  href: CodeStyle.md

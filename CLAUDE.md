@@ -66,9 +66,11 @@ These files are authoritative and take precedence over anything summarized
 below. Read the relevant one before writing code:
 
 - **`INDEX.tsv`** — generated index of every public type (grep it, per above).
-- **`CodeStyle.cs`** — the full C# style sheet (naming, formatting, comments,
-  events, ScriptableObjects). This is the source of truth for style; the
-  section below only highlights what's easiest to get wrong.
+- **`Docs/manual/CodeStyle.md`** — the full C# style sheet (naming, formatting,
+  comments, events, ScriptableObjects). This is the source of truth for style;
+  the section below only highlights what's easiest to get wrong. It is prose with
+  fenced examples rather than a compiled file, so it ships as documentation
+  instead of as a `MonoBehaviour` in every consuming project.
 - **`README.md`** — canonical folder structure with per-subfolder
   descriptions, plus the preprocessor-directive table (see below).
 - **`Docs/modules/`** — one page per module: purpose, entry points, drop-in
@@ -160,7 +162,8 @@ only a define constraint does.
 ## Architecture rules (ranked)
 
 These are *architecture* rules, distinct from the style rules in
-`CodeStyle.cs`. They are ranked: when two conflict, the lower number wins.
+`Docs/manual/CodeStyle.md`. They are ranked: when two conflict, the lower
+number wins.
 
 **POCO** = Plain Old CLR Object — an ordinary C# class with no Unity base
 type. Not a `MonoBehaviour`, not a `ScriptableObject`: constructible with
@@ -344,7 +347,7 @@ with an optional `Editor/` sub-asmdef:
 AI/  Animations/  Attributes/  Audio/  Editor/  Enums/  Examples/
 Extensions/  Gameplay/  Inputs/  Interfaces/  Networking/  Optimization/
 Patterns/  Physics/  Scenes/  ScriptableObjects/  Services/  Splines/
-Structs/  Systems/  Tilemaps/  Tools/  UI/  Utility/  VFX/  Video/  XR/
+Structs/  Systems/  Tools/  UI/  Utility/  VFX/  Video/  XR/
 ```
 
 `README.md` has the full breakdown with per-subfolder descriptions — consult
@@ -356,8 +359,8 @@ first if it's not obvious, and update `README.md` when you do.
 
 ## C# conventions
 
-**`CodeStyle.cs` at the repo root is the authoritative style sheet** (adapted
-from Unity's Code Style Guide e-book). Read it rather than inferring style.
+**`Docs/manual/CodeStyle.md` is the authoritative style sheet** (adapted from
+Unity's Code Style Guide e-book). Read it rather than inferring style.
 Highlights that are easy to get wrong:
 
 - **Allman braces** (opening brace on its own line), ~120 char lines.
@@ -377,7 +380,7 @@ Highlights that are easy to get wrong:
   to the DocFX site, so on a shared library they're part of the deliverable,
   not optional polish.
 
-Unity-specific rules not covered by `CodeStyle.cs`:
+Unity-specific rules not covered by `CodeStyle.md`:
 
 - New modules needing Editor-only code get a `<Module>/Editor/` folder with
   its own `SombraStudios.Shared.<Module>.Editor.asmdef`, mirroring existing
