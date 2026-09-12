@@ -144,7 +144,6 @@ The repository is organized into the following main folders:
       - **Teleport/**: Scripts handling teleportation mechanics.
       - **Tutorial/**: Scripts for managing in-game tutorials and guidance.
 	  - **Unlock/**: 
-   - **Tilemaps/**: Scripts related to Unity's Tilemap system.
    - **Tools/**: General-purpose tools for various tasks.
       - **Search/**: Provides runtime and editor search tools for filtering and locating assets and references.
    - **UI/**: Scripts for managing user interface elements.
