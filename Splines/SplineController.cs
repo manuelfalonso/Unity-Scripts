@@ -140,7 +140,7 @@ namespace SombraStudios.Shared.Splines
             if (_splineAnimation == null) { return; }
             if (!_isActive) { return; }
             _splineAnimation.Restart(false);
-            OnAnimationReseted();
+            OnAnimationReset();
         }
 
 
@@ -188,11 +188,11 @@ namespace SombraStudios.Shared.Splines
                 Utility.Loggers.Logger.Log("AnimationStopped", this);
         }
 
-        private void OnAnimationReseted()
+        private void OnAnimationReset()
         {
             AnimationReset?.Invoke();
             if (_showLogs)
-                Utility.Loggers.Logger.Log("AnimationReseted", this);
+                Utility.Loggers.Logger.Log("AnimationReset", this);
         }
 
         private void OnAnimationCompleted()

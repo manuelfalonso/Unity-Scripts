@@ -1,14 +1,24 @@
 {
     "name": "SombraStudios.Shared.Video",
     "rootNamespace": "SombraStudios.Shared.Video",
-    "references": [],
+    "references": [
+        "SombraStudios.Shared.Extensions"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
     "precompiledReferences": [],
     "autoReferenced": true,
-    "defineConstraints": [],
-    "versionDefines": [],
+    "defineConstraints": [
+        "UNITY_MODULE_VIDEO"
+    ],
+    "versionDefines": [
+        {
+            "name": "com.unity.modules.video",
+            "expression": "",
+            "define": "UNITY_MODULE_VIDEO"
+        }
+    ],
     "noEngineReferences": false
 }
