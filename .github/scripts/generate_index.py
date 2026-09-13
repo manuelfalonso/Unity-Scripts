@@ -12,6 +12,7 @@ Usage:
 """
 
 import argparse
+import json
 import os
 import re
 import sys
@@ -266,6 +267,58 @@ def scan_file(path, rel_path):
     return rows
 
 
+ASMDEF_CACHE = {}
+
+
+def asmdef_constraints(directory):
+    """The defineConstraints of the nearest enclosing .asmdef, walking up to the repo root.
+
+    An assembly-level constraint gates every type in it just as surely as an #if does, but
+    leaves no trace in the source file — so without this the Gate column would claim a
+    constrained type is unconditional.
+    """
+    if directory in ASMDEF_CACHE:
+        return ASMDEF_CACHE[directory]
+
+    constraints = []
+    try:
+        entries = sorted(name for name in os.listdir(directory) if name.endswith(".asmdef"))
+    except OSError:
+        entries = []
+
+    if entries:
+        try:
+            with open(os.path.join(directory, entries[0]), "r", encoding="utf-8-sig") as handle:
+                constraints = [c for c in json.load(handle).get("defineConstraints", []) if c]
+        except (OSError, ValueError):
+            constraints = []
+    elif os.path.normpath(directory) != os.path.normpath(REPO_ROOT):
+        parent = os.path.dirname(directory)
+        if parent and parent != directory:
+            constraints = asmdef_constraints(parent)
+
+    ASMDEF_CACHE[directory] = constraints
+    return constraints
+
+
+def apply_assembly_gates(rows, directory):
+    """Fold the owning assembly's define constraints into each row's Gate."""
+    constraints = asmdef_constraints(directory)
+    if not constraints:
+        return
+
+    for row in rows:
+        parts = list(constraints)
+        if row["Gate"] != "-":
+            parts.extend(part for part in row["Gate"].split(" && ") if part)
+
+        seen = []
+        for part in parts:
+            if part not in seen:
+                seen.append(part)
+        row["Gate"] = " && ".join(seen) or "-"
+
+
 def collect_rows():
     rows = []
     for dirpath, dirnames, filenames in os.walk(REPO_ROOT):
@@ -276,7 +329,9 @@ def collect_rows():
                 continue
             full = os.path.join(dirpath, filename)
             rel = os.path.relpath(full, REPO_ROOT).replace(os.sep, "/")
-            rows.extend(scan_file(full, rel))
+            file_rows = scan_file(full, rel)
+            apply_assembly_gates(file_rows, dirpath)
+            rows.extend(file_rows)
     rows.sort(key=lambda row: (row["Type"].lower(), row["Namespace"].lower(), row["Path"].lower()))
     return rows
 

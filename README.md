@@ -73,6 +73,7 @@ This repository includes various Unity packages, each associated with preprocess
 | **XR Interaction Toolkit**    | `#if UNITY_XR_INTERACTION_TOOLKIT` | [XR Interaction Toolkit](https://docs.unity3d.com/Packages/com.unity.xr.interaction.toolkit@3.0/manual/index.html) |
 | **Cinemachine**               | `#if CINEMACHINE`                  | [Cinemachine](https://docs.unity3d.com/Packages/com.unity.cinemachine@3.1/manual/index.html) |
 | **Ads**                       | `#if UNITY_ADVERTISEMENTS`         | [Ads](https://docs.unity.com/ads/en-us/manual/UnityAdsHome) |
+| **Netcode for GameObjects**   | `#if NETCODE_GAMEOBJECTS`          | [Netcode for GameObjects](https://docs-multiplayer.unity3d.com/netcode/current/about/) |
 
 ### External
 | Package                       | Preprocessor Directive Symbol              | Documentation |
@@ -83,9 +84,15 @@ This repository includes various Unity packages, each associated with preprocess
 | **Eflatun.SceneReference**    | `#if Eflatun_SceneReference`               | [Eflatun.SceneReference](https://github.com/starikcetin/Eflatun.SceneReference.git#4.0.0) |
 | **Firebase**                  | `#if FIREBASE_APP`                         | [Firebase](https://firebase.google.com/docs/unity/setup?hl=en) |
 | **Firebase Authentication**   | `#if FIREBASE_AUTH`                        | [Firebase Authentication](https://firebase.google.com/docs/auth/unity/start?hl=en) |
+| **Facepunch Steam Transport** | `#if FACEPUNCH_TRANSPORT`                  | [Facepunch Transport for NGO](https://github.com/Unity-Technologies/multiplayer-community-contributions/tree/main/Transports/com.community.netcode.transport.facepunch) |
 
 Make sure the appropriate symbols are defined in the **Scripting Define Symbols** in Unity's **Player Settings** when working with these packages:
 Go to Edit > Project Settings > Player. Under **Scripting Define Symbols**, add a new symbol, for example, CINEMACHINE.
+
+`NETCODE_GAMEOBJECTS` and `FACEPUNCH_TRANSPORT` are the exception: they are
+declared as asmdef `versionDefines`, so Unity sets them automatically when the
+package is present and clears them when it is not. Do not add them by hand.
+See [Docs/manual/SteamworksSetup.md](Docs/manual/SteamworksSetup.md).
 
 ## Repository Structure
 

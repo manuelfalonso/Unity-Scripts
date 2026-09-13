@@ -32,7 +32,7 @@ Each is one assembly, `SombraStudios.Shared.<Module>`, most with an optional
 | `Tools/` | 8 | — | General tools, notably `Search/` for assets and references |
 | `Services/` | 8 | — | Third-party integrations: Ads, Firebase, notifications, web API. Mostly gated |
 | `Attributes/` | 8 | — | Custom property attributes and their drawers |
-| `Networking/` | 5 | — | Netcode boilerplate. Entirely gated |
+| `Networking/` | 20 | [Networking.md](Networking.md) | Steam lobby + NGO session plumbing; `Sessions/` is dependency-free, `Steam/` and `Netcode/` are gated |
 | `Editor/` | 4 | — | Repo-wide editor utilities |
 | `Optimization/` | 3 | — | `ReturnToPool` and friends |
 | `Structs/` | 3 | — | Lightweight serializable value containers |

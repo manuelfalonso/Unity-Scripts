@@ -1,4 +1,4 @@
-#if REQUIRES_EXTERNAL_PACKAGE
+#if NETCODE_GAMEOBJECTS
 using UnityEngine;
 using Unity.Netcode;
 

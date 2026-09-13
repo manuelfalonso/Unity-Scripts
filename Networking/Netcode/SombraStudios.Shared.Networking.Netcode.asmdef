@@ -1,0 +1,24 @@
+{
+    "name": "SombraStudios.Shared.Networking.Netcode",
+    "rootNamespace": "SombraStudios.Shared.Networking.Netcode",
+    "references": [
+        "Unity.Netcode.Runtime"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [
+        "NETCODE_GAMEOBJECTS"
+    ],
+    "versionDefines": [
+        {
+            "name": "com.unity.netcode.gameobjects",
+            "expression": "",
+            "define": "NETCODE_GAMEOBJECTS"
+        }
+    ],
+    "noEngineReferences": false
+}

@@ -1,4 +1,4 @@
-#if REQUIRES_EXTERNAL_PACKAGE
+#if NETCODE_GAMEOBJECTS
 using Unity.Netcode;
 using UnityEngine;
 
@@ -7,45 +7,58 @@ namespace SombraStudios.Shared.Networking.Netcode
     /// <summary>
     /// Approval check using a string room password.
     /// </summary>
+    /// <remarks>
+    /// The password travels in <see cref="NetworkConfig.ConnectionData"/>, which is sent in the
+    /// clear during the handshake — it keeps honest players out of the wrong room, it is not
+    /// security. See https://docs-multiplayer.unity3d.com/netcode/current/basics/connection-approval/
+    /// </remarks>
     public class ConnectionApproval : MonoBehaviour
     {
         [SerializeField] private Vector3 _positionToSpawnAt;
-        [SerializeField] private Quaternion _rotationToSpawnWith;
+        [SerializeField] private Quaternion _rotationToSpawnWith = Quaternion.identity;
 
         [SerializeField] private string _roomPassword = "1234";
         [SerializeField] private string _inputRoomPassword = "5678";
 
         private void SetupHost()
         {
-            NetworkManager.Singleton.ConnectionApprovalCallback += ApprovalCheck;
+            // Assigned, not subscribed: the setter rejects a delegate with more than one
+            // handler, so "+=" throws as soon as a second one registers.
+            NetworkManager.Singleton.ConnectionApprovalCallback = ApprovalCheck;
+
+            // Without this the callback is never invoked and Netcode logs a warning.
+            NetworkManager.Singleton.NetworkConfig.ConnectionApproval = true;
+
             NetworkManager.Singleton.StartHost();
         }
 
         private void SetupClient()
         {
-            NetworkManager.Singleton.NetworkConfig.ConnectionData = 
+            NetworkManager.Singleton.NetworkConfig.ConnectionApproval = true;
+            NetworkManager.Singleton.NetworkConfig.ConnectionData =
                 System.Text.Encoding.ASCII.GetBytes(_inputRoomPassword);
             NetworkManager.Singleton.StartClient();
         }
 
         private void ApprovalCheck(
-            byte[] connectionData, 
-            ulong clientId, 
-            NetworkManager.ConnectionApprovedDelegate callback)
+            NetworkManager.ConnectionApprovalRequest request,
+            NetworkManager.ConnectionApprovalResponse response)
         {
-            //Your logic here
-            //bool approve = true;
-            bool approve = System.Text.Encoding.ASCII.GetString(connectionData) == _roomPassword;
-            bool createPlayerObject = true;
+            // Your logic here.
+            var approve = System.Text.Encoding.ASCII.GetString(request.Payload) == _roomPassword;
 
-            // If approve is true, the connection gets added. If it's false. 
-            // The client gets disconnected
-            callback(
-                createPlayerObject,
-                null, // The prefab hash. Use null to use the default player prefab
-                approve,
-                _positionToSpawnAt,
-                _rotationToSpawnWith);
+            // If Approved is true the connection gets added. If it's false the client is
+            // disconnected, and Reason is what it sees.
+            response.Approved = approve;
+            response.CreatePlayerObject = true;
+
+            // Null uses the default player prefab.
+            response.PlayerPrefabHash = null;
+            response.Position = _positionToSpawnAt;
+            response.Rotation = _rotationToSpawnWith;
+
+            if (!approve)
+                response.Reason = "Wrong room password.";
         }
 
         private void OnGUI()

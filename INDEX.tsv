@@ -29,7 +29,6 @@ AssetOnlyAttribute	class	PropertyAttribute	SombraStudios.Shared.Attributes	Attri
 AssetOnlyDrawer	class	PropertyDrawer	SombraStudios.Shared.Attributes.Editor	Attributes/Editor/AssetOnlyDrawer.cs	UNITY_EDITOR	Custom property drawer for the AssetOnlyAttribute
 AssetSearchWindow<T>	class	SearchWindow	SombraStudios.Shared.Tools.Search.AssetOrComponent	Tools/Search/AssetOrComponent/Base/AssetSearchWindow.cs	-	Abstract class for creating a custom Editor window to search for assets of type T
 AttachGameObjectsToParticles	class	MonoBehaviour	SombraStudios.Shared.VFX	VFX/AttachGameObjectsToParticles.cs	-	-
-AttackModes	enum	-	StyleSheet	CodeStyle.cs	-	-
 AudioEventActionSO	class	RaiseEventActionSO	SombraStudios.Shared.Systems.Events	Systems/Events/EventActions/AudioEventActionSO.cs	-	-
 AudioStrategy	class	StrategySO	SombraStudios.Shared.Audio.Strategies	Audio/Strategies/AudioStrategy.cs	-	-
 AudioVolumeConfigurator	class	MonoBehaviour	SombraStudios.Shared.Audio	Audio/AudioVolumeConfigurator.cs	-	Singleton Class to manage AudioMixer volumes
@@ -80,8 +79,6 @@ CheckMethod	enum	-	SombraStudios.Shared.Scenes	Scenes/ScenePartLoader.cs	-	-
 CheckpointActionSO	class	EventActionSO	SombraStudios.Shared.Systems.Events	Systems/Events/EventActions/CheckpointActionSO.cs	-	-
 ClassAdapter	class	MonoBehaviour	SombraStudios.Shared.Examples.Patterns.Structural.Adapter.Class	Examples/Patterns/Structural/Adapter/Class/ClassAdapter.cs	-	Converts the interface of one object so that another object can understand it
 ClearRuntimeSetsOnExit	class	-	SombraStudios.Shared.ScriptableObjects.RuntimeSets.Editor	ScriptableObjects/RuntimeSets/Editor/ClearRuntimeSetsOnExit.cs	-	This class locates all of the GameObjectRuntimeSetSO objects in the project and clears their lists when exiting play mode
-CodeStyle	class	MonoBehaviour	StyleSheet	CodeStyle.cs	-	-
-CodeStyle.CustomEventArgs	struct	-	StyleSheet	CodeStyle.cs	-	-
 CollisionEventHandler	class	CollisionEventHandlerBase	SombraStudios.Shared.Physics.Events	Physics/Events/CollisionEventHandler.cs	-	Handles 3D collision events when at least one involved object has a non-kinematic Rigidbody and both have Colliders with IsTrigger disabled
 CollisionEventHandler2D	class	CollisionEventHandlerBase	SombraStudios.Shared.Physics.Events	Physics/Events/CollisionEventHandler2D.cs	-	Handles 3D collision events when at least one involved object has a non-kinematic Rigidbody and both have Colliders with IsTrigger disabled
 CollisionEventHandlerBase<T>	class	PhysicsEventHandlerBase	SombraStudios.Shared.Physics.Events	Physics/Events/CollisionEventHandlerBase.cs	-	Base class for handling physics collision events
@@ -103,7 +100,9 @@ ConditionalStrategySO<T>	class	StrategySO	SombraStudios.Shared.ScriptableObjects
 ConditionChecker	class	MonoBehaviour	SombraStudios.Shared.ScriptableObjects.Conditions	ScriptableObjects/Conditions/ConditionChecker.cs	-	Listens to a ConditionSO and invokes UnityEvents based on its validity
 ConditionSO	class	ConditionSO	SombraStudios.Shared.ScriptableObjects.Conditions	ScriptableObjects/Conditions/ConditionSO.cs	-	Abstract base class for condition ScriptableObjects without a parameterized type
 ConditionSO<T>	class	ScriptableObject	SombraStudios.Shared.ScriptableObjects.Conditions	ScriptableObjects/Conditions/ConditionSO.cs	-	Abstract base class for condition ScriptableObjects with a parameterized type
-ConnectionApproval	class	MonoBehaviour	SombraStudios.Shared.Networking.Netcode	Networking/Netcode/ConnectionApproval.cs	REQUIRES_EXTERNAL_PACKAGE	Approval check using a string room password
+ConnectionApproval	class	MonoBehaviour	SombraStudios.Shared.Networking.Netcode	Networking/Netcode/ConnectionApproval.cs	NETCODE_GAMEOBJECTS	Approval check using a string room password
+ConnectLobbyArguments	class	-	SombraStudios.Shared.Networking.Sessions	Networking/Sessions/ConnectLobbyArguments.cs	-	Reads the lobby ID Steam appends to the command line when a player accepts an invite or presses "Join game" while the game is not already...
+ConnectLobbyArgumentsTests	class	-	SombraStudios.Shared.Tests.Networking	Tests/EditMode/Networking/ConnectLobbyArgumentsTests.cs	UNITY_INCLUDE_TESTS	-
 ConstrainToBounds	class	MonoBehaviour	SombraStudios.Shared.Gameplay.PlayerMovement3D	Gameplay/PlayerMovement3D/ConstrainToBounds.cs	-	Constrain movement delimited by a box Collider NOTE: Don`t work with CharacterController movement
 Cooldown	class	MonoBehaviour	SombraStudios.Shared.Utility.Cooldown	Utility/Cooldown/Cooldown.cs	-	It can be used as a waiting period between using specific actions in a game/app, ensuring they can't be spammed and adding strategic dept...
 CoroutineManager	class	PersistentSingleton	SombraStudios.Shared.Utility.Coroutines	Utility/Coroutines/CoroutineManager.cs	-	Scene persistent Singleton MonoBehaviour to run Coroutines
@@ -135,7 +134,6 @@ DeterministicRandom	class	-	SombraStudios.Shared.Gameplay.Plinko	Gameplay/Plinko
 DevelopmentBuildConditionSO	class	ConditionSO	SombraStudios.Shared.ScriptableObjects.Conditions	ScriptableObjects/Conditions/DevelopmentBuildConditionSO.cs	-	Represents a condition that evaluates whether the application is running in a development build
 Direction	enum	-	SombraStudios.Shared.Extensions	Extensions/Direction.cs	-	A single direction along one of a transform's local axes
 Direction	enum	-	SombraStudios.Shared.Utility	Utility/DotProductValidator.cs	-	Enumeration of possible Vector3 directions
-Direction	enum	-	StyleSheet	CodeStyle.cs	-	-
 DontDestroyOnLoad	class	MonoBehaviour	SombraStudios.Shared.Utility.DontDestroy	Utility/DontDestroy/DontDestroyOnLoad.cs	-	MonoBehaviour to preserve objects on scene loads
 DotProductValidator	class	MonoBehaviour	SombraStudios.Shared.Utility	Utility/DotProductValidator.cs	-	Validator for two tranforms considering desired Direction for Dot Product operation
 DoTweenTester	class	MonoBehaviour	SombraStudios.Shared.Editor	Editor/DoTweenTester.cs	DOTWEEN	Implement abstract method to be able to test the Tween on Editor
@@ -161,6 +159,7 @@ ExampleDependenciesContext	class	DependenciesContext	SombraStudios.Shared.Patter
 ExampleDependencyMonobehaviour	class	MonoBehaviour	SombraStudios.Shared.Patterns.InversionOfControl.DependencyInjection.Example	Patterns/InversionOfControl/DependencyInjection/Example/ExampleDependencyMonobehaviour.cs	-	Example class
 ExampleDependencyNested	class	MonoBehaviour	SombraStudios.Shared.Patterns.InversionOfControl.DependencyInjection.Example	Patterns/InversionOfControl/DependencyInjection/Example/ExampleDependencyNested.cs	-	In this case scneario, the nested class is in a Prefab as you can see on ExampleDependenciesContext line 35
 ExampleDependencyPlainClass	class	-	SombraStudios.Shared.Patterns.InversionOfControl.DependencyInjection.Example	Patterns/InversionOfControl/DependencyInjection/Example/ExampleDependencyPlainClass.cs	-	-
+FacepunchLobbyBackend	class	ILobbyBackend	SombraStudios.Shared.Networking.Steam	Networking/Steam/FacepunchLobbyBackend.cs	FACEPUNCH_TRANSPORT	An ILobbyBackend over Steam lobbies, using Facepunch.Steamworks
 Factory	class	MonoBehaviour	SombraStudios.Shared.Patterns.Creational.FactoryMethod	Patterns/Creational/FactoryMethod/Factory.cs	-	Abstract factory class for creating product instances
 FillSliderTrigger	class	MonoBehaviour	SombraStudios.Shared.UI	UI/FillSliderTrigger.cs	-	Triggers an event when a slider bar is filled using an input Compatibility with both, legacy and the new Input System
 FirebaseExceptionHelper	class	-	SombraStudios.Shared.Services.Firebase	Services/Firebase/FirebaseExceptionHelper.cs	FIREBASE_APP && FIREBASE_AUTH	Method to return exception error message from a Firebase Excception Known issue: Conflict with Task de Unity.Tasks
@@ -224,7 +223,7 @@ GizmosSphereUtility	class	GizmosUtility	SombraStudios.Shared.Utility.UnityGizmos
 GizmosUtility	class	MonoBehaviour	SombraStudios.Shared.Utility.UnityGizmos	Utility/UnityGizmos/Monobehaviours/GizmosUtility.cs	-	Decorator/Wrapper over MonoBehaviour OnDrawGizmos and OnDrawGizmosSelected Unity messages
 GraphNode	class	MonoBehaviour	SombraStudios.Shared.Examples.Graphs	Examples/Graphs/GraphNode.cs	-	Represents a node in a graph with visual connections to neighboring nodes
 GridSpawner	class	MonoBehaviour	SombraStudios.Shared.Gameplay.Spawners	Gameplay/Spawners/GridSpawner.cs	-	This component spawns an array of Prefabs in a grid pattern -- useful for generating a wall of blocks
-GUILayoutNetwork	class	MonoBehaviour	SombraStudios.Shared.Networking.Netcode	Networking/Netcode/GUILayoutNetwork.cs	REQUIRES_EXTERNAL_PACKAGE	Class to show buttons and labels related to Networking
+GUILayoutNetwork	class	MonoBehaviour	SombraStudios.Shared.Networking.Netcode	Networking/Netcode/GUILayoutNetwork.cs	NETCODE_GAMEOBJECTS	Class to show buttons and labels related to Networking
 HandSide	enum	-	SombraStudios.Shared.Enums	Enums/HandSide.cs	-	Enum representing the side of a hand
 HandTarget	enum	-	SombraStudios.Shared.Enums	Enums/HandTarget.cs	-	Enum representing target hands for an action
 Haptic	class	-	SombraStudios.Shared.XR	XR/HapticInteractable.cs	UNITY_XR_INTERACTION_TOOLKIT	Configuration for haptic feedback
@@ -244,8 +243,6 @@ ICondition	interface	-	SombraStudios.Shared.Interfaces	Interfaces/ICondition.cs	
 ICondition<inT>	interface	-	SombraStudios.Shared.Interfaces	Interfaces/ICondition.cs	-	Defines an interface for checking conditions based on the provided data
 ICooldown	interface	-	SombraStudios.Shared.Utility.Cooldown	Utility/Cooldown/ICooldown.cs	-	-
 IDamageable	interface	-	SombraStudios.Shared.Systems.Damage	Systems/Damage/IDamageable.cs	-	-
-IDamageable	interface	-	StyleSheet	CodeStyle.cs	-	-
-IDamageable<T>	interface	-	StyleSheet	CodeStyle.cs	-	-
 IDamageStrategy	interface	IStrategy	SombraStudios.Shared.Examples.Patterns.Behavioural.Strategy	Examples/Patterns/Behavioural/Strategy/DamageStrategy.cs	-	The Strategy interface is common to all concrete strategies
 IDescribable	interface	-	SombraStudios.Shared.Interfaces	Interfaces/IDescribable.cs	-	Interface for objects that can provide a description
 IEnumerableExtensions	class	-	SombraStudios.Shared.Extensions	Extensions/IEnumerableExtensions.cs	-	Provides extension methods for working with IEnumerable{T} collections
@@ -266,13 +263,15 @@ IHealable	interface	-	SombraStudios.Shared.Systems.Heal	Systems/Heal/IHealable.c
 IIdentifiable	interface	-	SombraStudios.Shared.ScriptableObjects	ScriptableObjects/IIdentifiable.cs	-	Interface for objects that can be identified by a unique identifier
 IKeychain	interface	-	SombraStudios.Shared.XR.KeyLockSystem	XR/KeyLockSystem/IKeychain.cs	-	Interface to implement for objects that hold a set of Key s
 ILightningPhone	interface	-	SombraStudios.Shared.Examples.Patterns.Structural.Adapter.Object	Examples/Patterns/Structural/Adapter/Object/ILightningPhone.cs	-	-
+ILobbyBackend	interface	-	SombraStudios.Shared.Networking.Sessions	Networking/Sessions/ILobbyBackend.cs	-	The matchmaking half of a session: finding other players and agreeing who hosts
 ILoggerService	interface	-	SombraStudios.Shared.Utility.Loggers	Utility/Loggers/ILoggerService.cs	-	-
 ImageCarousel	class	MonoBehaviour	SombraStudios.Shared.UI	UI/ImageCarousel.cs	REQUIRES_EXTERNAL_PACKAGE	Image Carousel Class behaviour
 IMaterialProperty<T>	interface	-	SombraStudios.Shared.VFX.PropertySO	VFX/PropertySO/Material/IMaterialProperty.cs	-	Interface for defining and manipulating material shader properties
 IMPBProperty<T>	interface	-	SombraStudios.Shared.VFX.PropertySO	VFX/PropertySO/MaterialPropertyBlock/IMPBProperty.cs	-	Interface for Material Property Block properties
+INetworkSessionDriver	interface	-	SombraStudios.Shared.Networking.Sessions	Networking/Sessions/INetworkSessionDriver.cs	-	The transport half of a session: starting the server or opening the connection to it
 InjectFieldAttribute	class	Attribute	SombraStudios.Shared.Patterns.InversionOfControl.DependencyInjection	Patterns/InversionOfControl/DependencyInjection/InjectFieldAttribute.cs	-	The choice is the attribute based one, because you can use it with both plain classes and MonoBehaviours
 InputfieldSlideScreen	class	MonoBehaviour	SombraStudios.Shared.UI.Mobile	UI/Mobile/InputfieldSlideScreen.cs	UNITY_IOS || UNITY_ANDROID	When the Touch Keyboard is active and the assigned input field is focused, the assigned rect transform will adjust Y position to be on to...
-InputManager	class	Singleton	SombraStudios.Shared.Inputs.Manager	Inputs/InputManager.cs	-	Manages input actions and maps, enabling and disabling them as needed
+InputManager	class	Singleton	SombraStudios.Shared.Inputs.Manager	Inputs/InputManager.cs	UNITY_INPUT_SYSTEM	Manages input actions and maps, enabling and disabling them as needed
 InteractHandler	class	MonoBehaviour	SombraStudios.Shared.UI	UI/InteractHandler.cs	REQUIRES_EXTERNAL_PACKAGE	-
 InterstitialAdExample	class	MonoBehaviour	SombraStudios.Shared.Services.Advertisement	Services/Advertisement/InterstitialAdExample.cs	UNITY_ADVERTISEMENTS	Class for Interstitial advertisement
 IntervalTimer	class	Timer	SombraStudios.Shared.Utility.Timers.Core	Utility/Timers/Core/IntervalTimer.cs	-	Countdown timer that triggers events at specified intervals until completion
@@ -317,7 +316,7 @@ LightningToUsbAdapter	class	IUsbPhone	SombraStudios.Shared.Examples.Patterns.Str
 LineOfSight	class	-	SombraStudios.Shared.AI	AI/IsInSightData.cs	-	-
 LineOfSight	class	-	SombraStudios.Shared.AI	AI/LineOfSight.cs	-	Field of view and obstruction checks between two transforms
 LineOfSight.IsInSightData	struct	-	SombraStudios.Shared.AI	AI/IsInSightData.cs	-	Represents the data for a sight check
-LineOfSightTests	class	-	SombraStudios.Shared.Tests.AI	Tests/EditMode/AI/LineOfSightTests.cs	-	-
+LineOfSightTests	class	-	SombraStudios.Shared.Tests.AI	Tests/EditMode/AI/LineOfSightTests.cs	UNITY_INCLUDE_TESTS	-
 LinePositionsUpdater	class	MonoBehaviour	SombraStudios.Shared.VFX	VFX/LinePositionsUpdater.cs	-	Line Renderer positioner that use World Position to update the line positions
 Listener	class	MonoBehaviour	SombraStudios.Shared.Examples.Patterns.Behavioural.Observer	Examples/Patterns/Behavioural/Observer/Listener.cs	-	Listen to Observer event
 ListenEventActionSO	class	EventActionSO	SombraStudios.Shared.Systems.Events	Systems/Events/EventActions/ListenEventActionSO.cs	-	-
@@ -326,6 +325,13 @@ LoadingBarController	class	MonoBehaviour	SombraStudios.Shared.Utility	Utility/Lo
 LoadNextSceneStrategy	class	SceneStrategy	SombraStudios.Shared.Scenes.Strategies	Scenes/Strategies/LoadNextSceneStrategy.cs	-	Strategy for loading the next scene in the build index
 LoadSceneByIndexStrategy	class	SceneStrategy	SombraStudios.Shared.Scenes.Strategies	Scenes/Strategies/LoadSceneByIndexStrategy.cs	-	Strategy for asynchronously or synchronously loading a scene by its build index, with optional parameters
 LoadSceneByPathStrategy	class	SceneStrategy	SombraStudios.Shared.Scenes.Strategies	Scenes/Strategies/LoadSceneByPathStrategy.cs	-	Strategy for asynchronously or synchronously loading a scene by its scene path, with optional parameters
+LobbyInfo	struct	-	SombraStudios.Shared.Networking.Sessions	Networking/Sessions/LobbyInfo.cs	-	A snapshot of a lobby at the moment it was created or entered
+LobbyMember	struct	-	SombraStudios.Shared.Networking.Sessions	Networking/Sessions/LobbyMember.cs	-	One participant in a lobby, described without any Steamworks type
+LobbyMetadata	struct	-	SombraStudios.Shared.Networking.Sessions	Networking/Sessions/LobbyMetadata.cs	-	The key-value payload a host writes into its Steam lobby so clients can find the server and confirm they are compatible with it
+LobbyMetadataTests	class	-	SombraStudios.Shared.Tests.Networking	Tests/EditMode/Networking/LobbyMetadataTests.cs	UNITY_INCLUDE_TESTS	-
+LobbyVisibility	enum	-	SombraStudios.Shared.Networking.Sessions	Networking/Sessions/LobbyVisibility.cs	-	Who is allowed to find and enter a lobby
+LocalLobbyBackend	class	ILobbyBackend	SombraStudios.Shared.Networking.Sessions	Networking/Sessions/LocalLobbyBackend.cs	-	An in-memory ILobbyBackend that answers immediately and needs no platform service, for iterating on a multiplayer flow with a single machine
+LocalLobbyBackendTests	class	-	SombraStudios.Shared.Tests.Networking	Tests/EditMode/Networking/LocalLobbyBackendTests.cs	UNITY_INCLUDE_TESTS	-
 Lock	class	-	SombraStudios.Shared.XR.KeyLockSystem	XR/KeyLockSystem/Lock.cs	-	Use this object as a generic way to validate if an object can perform some action
 Logger	class	-	SombraStudios.Shared.Utility.Loggers	Utility/Loggers/Logger.cs	-	A utility class for logging messages in Unity with support for categories and colors
 LookAtController	class	MonoBehaviour	SombraStudios.Shared.Gameplay.Behaviours.LookAt	Gameplay/Behaviours/LookAt/LookAtController.cs	-	Controller to handle the "Look At" functionality on an object
@@ -388,12 +394,16 @@ MPBSetMatrixVFXSO	class	MaterialPropertyBlockPropertyVFXSO	SombraStudios.Shared.
 MPBSetTextureVFXSO	class	MaterialPropertyBlockPropertyVFXSO	SombraStudios.Shared.VFX.PropertySO	VFX/PropertySO/MaterialPropertyBlock/MPBSetTextureVFXSO.cs	-	ScriptableObject for setting a Texture property in a MaterialPropertyBlock
 MPBSetVectorArrayVFXSO	class	MaterialPropertyBlockPropertyVFXSO	SombraStudios.Shared.VFX.PropertySO	VFX/PropertySO/MaterialPropertyBlock/MPBSetVectorArrayVFXSO.cs	-	ScriptableObject for setting a Vector Array property in a MaterialPropertyBlock
 MPBSetVectorVFXSO	class	MaterialPropertyBlockPropertyVFXSO	SombraStudios.Shared.VFX.PropertySO	VFX/PropertySO/MaterialPropertyBlock/MPBSetVectorVFXSO.cs	-	ScriptableObject for setting a Vector property in a MaterialPropertyBlock
+MultiplayerSessionConfig	class	-	SombraStudios.Shared.Networking.Sessions	Networking/Sessions/MultiplayerSessionConfig.cs	-	Tunables for a multiplayer session
+MultiplayerSessionController	class	IDisposable	SombraStudios.Shared.Networking.Sessions	Networking/Sessions/MultiplayerSessionController.cs	-	Drives a multiplayer session end to end: creates or enters a lobby, publishes and reads the host address through lobby metadata, and star...
+MultiplayerSessionControllerTests	class	-	SombraStudios.Shared.Tests.Networking	Tests/EditMode/Networking/MultiplayerSessionControllerTests.cs	UNITY_INCLUDE_TESTS	-
 MultiStrategySO	class	StrategySO	SombraStudios.Shared.ScriptableObjects.Patterns.Behavioural.Strategy	ScriptableObjects/Patterns/Behavioural/Strategy/MultiStrategySO.cs	-	Represents a strategy that consists of multiple parameterless strategies to be executed sequentially
 MultiStrategySO<T>	class	StrategySO	SombraStudios.Shared.ScriptableObjects.Patterns.Behavioural.Strategy	ScriptableObjects/Patterns/Behavioural/Strategy/MultiStrategySO.cs	-	Represents a strategy that consists of multiple strategies to be executed sequentially
 MultiVisitorSO	class	VisitorSO	SombraStudios.Shared.Patterns.Behavioural.Visitor	Patterns/Behavioural/Visitor/MultiVisitorSO.cs	-	-
 MultiVisitorSO<T>	class	VisitorSO	SombraStudios.Shared.Patterns.Behavioural.Visitor	Patterns/Behavioural/Visitor/MultiVisitorSO.cs	-	Generic ScriptableObject that allows multiple typed visitors to visit a visitable element of a specific type
-NetworkCommandLine	class	MonoBehaviour	SombraStudios.Shared.Networking.Netcode	Networking/Netcode/NetworkCommandLine.cs	REQUIRES_EXTERNAL_PACKAGE	Class to launch our project outside Unity using command line
-NetworkVariableExample	class	NetworkBehaviour	SombraStudios.Shared.Networking.Netcode	Networking/Netcode/NetworkVariableExample.cs	REQUIRES_EXTERNAL_PACKAGE	Example Class of a Network Variable of type Vector3 where the server directly modify the Variable
+NetcodeSessionDriver	class	INetworkSessionDriver	SombraStudios.Shared.Networking.Steam	Networking/Steam/NetcodeSessionDriver.cs	FACEPUNCH_TRANSPORT	An INetworkSessionDriver over Netcode for GameObjects
+NetworkCommandLine	class	MonoBehaviour	SombraStudios.Shared.Networking.Netcode	Networking/Netcode/NetworkCommandLine.cs	NETCODE_GAMEOBJECTS	Class to launch our project outside Unity using command line
+NetworkVariableExample	class	NetworkBehaviour	SombraStudios.Shared.Networking.Netcode	Networking/Netcode/NetworkVariableExample.cs	NETCODE_GAMEOBJECTS && DOTWEEN	Example Class of a Network Variable of type Vector3 where the server directly modify the Variable
 NoInternetController	class	Singleton	SombraStudios.Shared.Utility	Utility/NoInternetController.cs	!UNITY_WEBGL	-
 NotConditionSO	class	ConditionSO	SombraStudios.Shared.ScriptableObjects.Conditions	ScriptableObjects/Conditions/NotConditionSO.cs	-	Represents a condition that negates the result of another condition
 NotificationManager	class	MonoBehaviour	SombraStudios.Shared.Services.Notifications	Services/Notifications/NotificationManager.cs	-	Unity Mobile Notifications documentation: https://docs.unity3d.com/Packages/com.unity.mobile.notifications@2.3/manual/index.html
@@ -431,7 +441,6 @@ PingPongLight	class	MonoBehaviour	SombraStudios.Shared.VFX	VFX/PingPongLight.cs	
 PlatformConditionSO	class	ConditionSO	SombraStudios.Shared.ScriptableObjects.Conditions	ScriptableObjects/Conditions/PlatformConditionSO.cs	-	Represents a condition that evaluates whether the current runtime platform matches any of the specified valid platforms
 PlayerMovement2DTopDown	class	MonoBehaviour	SombraStudios.Shared.Gameplay.PlayerMovement2D	Gameplay/PlayerMovement2D/PlayerMovement2DTopDown.cs	-	Handles top-down 2D player movement, supporting both legacy and new input systems
 PlayerMoveOnSphere	class	MonoBehaviour	SombraStudios.Shared.Gameplay.PlayerMovement3D	Gameplay/PlayerMovement3D/PlayerMoveOnSphere.cs	CINEMACHINE	Move an object with Input around a SphereCollider
-PlayerStats	struct	-	StyleSheet	CodeStyle.cs	-	-
 PlayQuickSound	class	MonoBehaviour	SombraStudios.Shared.Audio	Audio/PlayQuickSound.cs	-	Play a simple sound using PlayOneShot with volume and randomized pitch
 PlinkoBakeReport	class	-	SombraStudios.Shared.Gameplay.Plinko	Gameplay/Plinko/PlinkoBakeReport.cs	-	What a bake produced, and everything it could not produce
 PlinkoBakeResult	class	-	SombraStudios.Shared.Gameplay.Plinko	Gameplay/Plinko/PlinkoSolver.cs	-	Everything one bake produced
@@ -453,14 +462,14 @@ PlinkoLayoutPreset	enum	-	SombraStudios.Shared.Gameplay.Plinko	Gameplay/Plinko/P
 PlinkoLayoutSnapshot	class	-	SombraStudios.Shared.Gameplay.Plinko	Gameplay/Plinko/PlinkoLayoutSnapshot.cs	-	A flat, array backed copy of a layout, taken once before a bake and read by the tracer's inner loop
 PlinkoPath	class	-	SombraStudios.Shared.Gameplay.Plinko	Gameplay/Plinko/PlinkoPath.cs	-	One complete simulated drop: every ballistic arc between bounces, every contact along the way, and the catch point it ends in
 PlinkoPathSet	class	-	SombraStudios.Shared.Gameplay.Plinko	Gameplay/Plinko/PlinkoPathSet.cs	-	The baked drops, indexed by entry and catch point
-PlinkoPathSetAssetTests	class	-	SombraStudios.Shared.Tests.Plinko	Tests/EditMode/Plinko/PlinkoPathSetAssetTests.cs	-	Covers baking a path set into an asset and loading it back: the stored drops must replay identically to the ones that were simulated, and...
+PlinkoPathSetAssetTests	class	-	SombraStudios.Shared.Tests.Plinko	Tests/EditMode/Plinko/PlinkoPathSetAssetTests.cs	UNITY_INCLUDE_TESTS	Covers baking a path set into an asset and loading it back: the stored drops must replay identically to the ones that were simulated, and...
 PlinkoPathSetBaker	class	-	SombraStudios.Shared.Gameplay.Plinko.Editor	Gameplay/Plinko/Editor/PlinkoPathSetBaker.cs	-	Runs a Plinko bake and writes the result to a PlinkoPathSetSO asset
-PlinkoPathSetBakerTests	class	-	SombraStudios.Shared.Tests.Plinko	Tests/EditMode/Plinko/PlinkoPathSetBakerTests.cs	-	Covers the Editor bake: writing a path set to a real asset, reading it back off disk, and playing it through a board without simulating
+PlinkoPathSetBakerTests	class	-	SombraStudios.Shared.Tests.Plinko	Tests/EditMode/Plinko/PlinkoPathSetBakerTests.cs	UNITY_INCLUDE_TESTS	Covers the Editor bake: writing a path set to a real asset, reading it back off disk, and playing it through a board without simulating
 PlinkoPathSetSO	class	ScriptableObject	SombraStudios.Shared.Gameplay.Plinko	Gameplay/Plinko/PlinkoPathSetSO.cs	-	A baked path set stored as an asset, together with the board it was baked from
-PlinkoPenetrationTests	class	-	SombraStudios.Shared.Tests.Plinko	Tests/EditMode/Plinko/PlinkoPenetrationTests.cs	-	Guards the one thing a player notices immediately: the token must never pass through a peg
+PlinkoPenetrationTests	class	-	SombraStudios.Shared.Tests.Plinko	Tests/EditMode/Plinko/PlinkoPenetrationTests.cs	UNITY_INCLUDE_TESTS	Guards the one thing a player notices immediately: the token must never pass through a peg
 PlinkoSimConfig	class	-	SombraStudios.Shared.Gameplay.Plinko	Gameplay/Plinko/PlinkoSimConfig.cs	-	The ball and the simulation budget: size, gravity, launch speed, and how long a drop may go on
 PlinkoSolver	class	-	SombraStudios.Shared.Gameplay.Plinko	Gameplay/Plinko/PlinkoSolver.cs	-	Runs the drop simulation many times over a layout and keeps a spread of distinct paths for every entry and catch point pair
-PlinkoSolverTests	class	-	SombraStudios.Shared.Tests.Plinko	Tests/EditMode/Plinko/PlinkoSolverTests.cs	-	Covers the deterministic Plinko drop simulator: layout geometry, bounce reflection, the simulation itself, and the baked path set
+PlinkoSolverTests	class	-	SombraStudios.Shared.Tests.Plinko	Tests/EditMode/Plinko/PlinkoSolverTests.cs	UNITY_INCLUDE_TESTS	Covers the deterministic Plinko drop simulator: layout geometry, bounce reflection, the simulation itself, and the baked path set
 PlinkoTraceOutcome	enum	-	SombraStudios.Shared.Gameplay.Plinko	Gameplay/Plinko/PlinkoTracer.cs	-	What ended a traced arc
 PlinkoTracer	class	-	SombraStudios.Shared.Gameplay.Plinko	Gameplay/Plinko/PlinkoTracer.cs	-	Marches a ballistic arc forward through a layout and reports the first peg, wall or catch point it reaches
 PlinkoTraceResult	struct	-	SombraStudios.Shared.Gameplay.Plinko	Gameplay/Plinko/PlinkoTracer.cs	-	The first thing a traced arc reached
@@ -484,9 +493,9 @@ RaiseEventActionSO	class	EventActionSO	SombraStudios.Shared.Systems.Events	Syste
 RandomAssemblySprites	class	MonoBehaviour	SombraStudios.Shared.Utility.Sprites	Utility/Sprites/RandomAssemblySprites.cs	-	It could be attached to a NPC or Player to randomly generate characters
 RandomColor	class	MonoBehaviour	SombraStudios.Shared.VFX	VFX/RandomColor.cs	-	Asign a random color to the material
 RangedFloat	struct	IEquatable	SombraStudios.Shared.Structs	Structs/RangedFloat.cs	-	Represents a range of float values with a minimum and maximum value
-RangedFloatTests	class	-	SombraStudios.Shared.Tests.Structs	Tests/EditMode/Structs/RangedFloatTests.cs	-	-
+RangedFloatTests	class	-	SombraStudios.Shared.Tests.Structs	Tests/EditMode/Structs/RangedFloatTests.cs	UNITY_INCLUDE_TESTS	-
 RangedInt	struct	IEquatable	SombraStudios.Shared.Structs	Structs/RangedInt.cs	-	Represents a range of integer values with a minimum and maximum value
-RangedIntTests	class	-	SombraStudios.Shared.Tests.Structs	Tests/EditMode/Structs/RangedIntTests.cs	-	-
+RangedIntTests	class	-	SombraStudios.Shared.Tests.Structs	Tests/EditMode/Structs/RangedIntTests.cs	UNITY_INCLUDE_TESTS	-
 RaycastFootstepController	class	FootstepController	SombraStudios.Shared.Audio.Footsteps	Audio/Footsteps/RaycastFootstepController.cs	-	Select an audio clip list with a RayCast to the floor
 ReadmeEditor	class	Editor	SombraStudios.Shared.Editor	Editor/ReadmeEditor.cs	UNITY_EDITOR	Editor script for the readme scriptable object Credits to: rich-joslin-unity
 ReadmeSO	class	ScriptableObject	SombraStudios.Shared.Editor	Editor/ReadmeSO.cs	-	SO used for the Editor Readme Script It supports Title, icon, headers, body, format, boxes, bullet list and links Credits to: rich-joslin...
@@ -520,7 +529,7 @@ ReturnToPool	class	MonoBehaviour	SombraStudios.Shared.Optimization	Optimization/
 RevertVFXOnStateExit	class	StateMachineBehaviour	SombraStudios.Shared.VFX.PropertySO	VFX/PropertySO/RevertVFXOnStateExit.cs	-	StateMachineBehaviour that reverts VFX properties on state exit
 RewardedAdsButton	class	MonoBehaviour	SombraStudios.Shared.Services.Advertisement	Services/Advertisement/RewardedAdsButton.cs	UNITY_ADVERTISEMENTS	Example Class for Rewarded Advertisement using a button
 Rotate	class	MonoBehaviour	SombraStudios.Shared.Gameplay.Movement2D	Gameplay/Movement2D/Rotate.cs	-	Rotate scripts using forces
-RpcTest	class	NetworkBehaviour	SombraStudios.Shared.Networking.Netcode	Networking/Netcode/RpcTest.cs	REQUIRES_EXTERNAL_PACKAGE	Small Class example of the RPC messaging system
+RpcTest	class	NetworkBehaviour	SombraStudios.Shared.Networking.Netcode	Networking/Netcode/RpcTest.cs	NETCODE_GAMEOBJECTS	Small Class example of the RPC messaging system
 RuntimeSetSO<T>	class	ScriptableObject	SombraStudios.Shared.ScriptableObjects.RuntimeSets	ScriptableObjects/RuntimeSets/RuntimeSetSO.cs	-	A generic runtime set ScriptableObject that holds a list of items of type T
 SafeArea	class	MonoBehaviour	SombraStudios.Shared.UI.Mobile	UI/Mobile/SafeArea.cs	-	Adjusts the RectTransform based on the device's safe area
 SceneAssetSO	class	ScriptableObject	SombraStudios.Shared.Scenes.SceneAsset	Scenes/SceneAsset/SceneAssetSO.cs	-	-
@@ -540,6 +549,9 @@ ServiceLocator	class	MonoBehaviour	SombraStudios.Shared.Patterns.InversionOfCont
 ServiceLocatorGlobal	class	Bootstrapper	SombraStudios.Shared.Patterns.InversionOfControl.ServiceLocator	Patterns/InversionOfControl/ServiceLocator/ServiceLocatorGlobal.cs	-	-
 ServiceLocatorScene	class	Bootstrapper	SombraStudios.Shared.Patterns.InversionOfControl.ServiceLocator	Patterns/InversionOfControl/ServiceLocator/ServiceLocatorScene.cs	-	-
 ServiceManager	class	-	SombraStudios.Shared.Patterns.InversionOfControl.ServiceLocator	Patterns/InversionOfControl/ServiceLocator/ServiceManager.cs	-	-
+SessionState	enum	-	SombraStudios.Shared.Networking.Sessions	Networking/Sessions/SessionState.cs	-	The lifecycle of a multiplayer session, from offline to connected
+SessionStateMachine	class	-	SombraStudios.Shared.Networking.Sessions	Networking/Sessions/SessionStateMachine.cs	-	Guards the legal transitions between SessionState values
+SessionStateMachineTests	class	-	SombraStudios.Shared.Tests.Networking	Tests/EditMode/Networking/SessionStateMachineTests.cs	UNITY_INCLUDE_TESTS	-
 SetActiveSceneStrategy	class	SceneStrategy	SombraStudios.Shared.Scenes.Strategies	Scenes/Strategies/SetActiveSceneStrategy.cs	-	-
 SetBlendShapeVFXSO	class	VFXPropertySO	SombraStudios.Shared.VFX.PropertySO	VFX/PropertySO/BlendShape/SetBlendShapeVFXSO.cs	-	VFX to set a blend shape weight of a SkinnedMeshRenderer
 SFXEntityHelper	class	MonoBehaviour	SombraStudios.Shared.Audio.System	Audio/System/Clients/SFXEntityHelper.cs	A_YELLOWPAPER_SERIALIZED_COLLECTIONS	Helper class for managing SFX and voice playback for entities
@@ -568,7 +580,7 @@ SpawnerPosition.ActiveSpawn	class	-	SombraStudios.Shared.Gameplay.Spawners	Gamep
 SpawnPoint	class	MonoBehaviour	SombraStudios.Shared.Systems.Teleport	Systems/Teleport/SpawnPoint.cs	-	Transform gameObject used as Teleporter destination
 SplashScreenController	class	MonoBehaviour	SombraStudios.Shared.UI	UI/SplashScreenController.cs	-	Simple Splash screen controller that activates and deactivates objects Each object can set its own show duration time
 SplashScreenLogo	class	MonoBehaviour	SombraStudios.Shared.UI	UI/SplashScreenLogo.cs	-	-
-SplineController	class	MonoBehaviour	SombraStudios.Shared.Splines	Splines/SplineController.cs	-	Animates objects using Unity Splines package and Animation Curves Works either with Objects and UI Requieres: UnityEngine.Splines Documen...
+SplineController	class	MonoBehaviour	SombraStudios.Shared.Splines	Splines/SplineController.cs	UNITY_SPLINES	Animates objects using Unity Splines package and Animation Curves Works either with Objects and UI Requieres: UnityEngine.Splines Documen...
 StackStateMachine<TContext>	class	struct	SombraStudios.Shared.Patterns.Behavioural.StackStateMachine	Patterns/Behavioural/StackStateMachine/StackStateMachine.cs	-	Implements a stack-based state machine
 Stat<T,TModifier>	class	IStat	SombraStudios.Shared.Systems.Stats	Systems/Stats/Stat.cs	-	Represents a stat with a base value and potential modifiers
 StatBoolModifier	class	StatModifier	SombraStudios.Shared.Systems.Stats	Systems/Stats/StatModifiers/StatBoolModifier.cs	-	Represents a modifier for a boolean stat
@@ -585,6 +597,9 @@ StatFloatModifier	class	StatModifier	SombraStudios.Shared.Systems.Stats	Systems/
 StatIntModifier	class	StatModifier	SombraStudios.Shared.Systems.Stats	Systems/Stats/StatModifiers/StatIntModifier.cs	-	Represents a modifier for an integer stat
 StatModifier<T>	class	-	SombraStudios.Shared.Systems.Stats	Systems/Stats/StatModifiers/StatModifier.cs	-	Represents a modifier for a stat
 StatSheetSO	class	ScriptableObject	SombraStudios.Shared.Systems.Stats	Systems/Stats/StatSheetSO.cs	-	Represents a collection of stats
+SteamLobbyDemoGUI	class	MonoBehaviour	SombraStudios.Shared.Networking.Steam	Networking/Steam/SteamLobbyDemoGUI.cs	FACEPUNCH_TRANSPORT	A runtime IMGUI panel for driving and inspecting a SteamMultiplayerBootstrap without building any UI
+SteamMultiplayerBootstrap	class	MonoBehaviour	SombraStudios.Shared.Networking.Steam	Networking/Steam/SteamMultiplayerBootstrap.cs	FACEPUNCH_TRANSPORT	Drop-in entry point for Steam multiplayer: builds the session controller, keeps Steam callbacks pumped, and exposes Host, Join, Invite an...
+SteamRuntime	class	-	SombraStudios.Shared.Networking.Steam	Networking/Steam/SteamRuntime.cs	FACEPUNCH_TRANSPORT	Initialises and shuts down the Steam client exactly once, no matter how many systems ask
 StopwatchTimer	class	Timer	SombraStudios.Shared.Utility.Timers.Core	Utility/Timers/Core/StopwatchTimer.cs	-	Timer that counts up from zero to infinity
 StrategySO	class	StrategySO	SombraStudios.Shared.ScriptableObjects.Patterns.Behavioural.Strategy	ScriptableObjects/Patterns/Behavioural/Strategy/StrategySO.cs	-	Abstract base class for strategy pattern implementation using ScriptableObject
 StrategySO<T>	class	SOWithId	SombraStudios.Shared.ScriptableObjects.Patterns.Behavioural.Strategy	ScriptableObjects/Patterns/Behavioural/Strategy/StrategySO.cs	-	Abstract base class for strategy pattern implementation using ScriptableObject
@@ -609,9 +624,7 @@ TeleportableNavMeshAgent	class	MonoBehaviour	SombraStudios.Shared.Systems.Telepo
 Teleporter	class	MonoBehaviour	SombraStudios.Shared.Systems.Teleport	Systems/Teleport/Teleporter.cs	-	Teleport behaviour to a SpawnPoint object inside the same scene or another one
 TeleporterTrigger	class	MonoBehaviour	SombraStudios.Shared.Systems.Teleport	Systems/Teleport/TeleporterTrigger.cs	-	Uses the Teleport behaviour with a trigger to create a teleport zone
 TeleportManager	class	PersistentSingleton	SombraStudios.Shared.Systems.Teleport	Systems/Teleport/TeleportManager.cs	-	Manages the registration and unregistration of spawn points
-TestSO	class	ScriptableObject	StyleSheet	CodeStyle.cs	-	-
 TextureOffset	class	MonoBehaviour	SombraStudios.Shared.VFX	VFX/TextureOffset.cs	-	Offseting the texture of a Sprite or UI Image to make a moving background
-TileSelection	class	MonoBehaviour	SombraStudios.Shared.Tilemaps	Tilemaps/TileSelection.cs	-	Required: Tilemap must have a Collider2D
 TiltObject	class	MonoBehaviour	SombraStudios.Shared.Gameplay	Gameplay/TiltObject.cs	-	Tilt an object sideways up to tiltAngle
 TiltWindow	class	MonoBehaviour	SombraStudios.Shared.UI	UI/TiltWindow.cs	-	Tilt a transform based on the range defined
 TimedSelfDestruct	class	MonoBehaviour	SombraStudios.Shared.Gameplay	Gameplay/TimedSelfDestruct.cs	-	Destroys the game object attached to, after certain time
@@ -675,7 +688,7 @@ Vector3EventChannelSO	class	GenericEventChannelSO	SombraStudios.Shared.Patterns.
 Vector3EventChannelSOEditor	class	GenericEventChannelSOEditor	SombraStudios.Shared.Patterns.Behavioural.Observer.ScriptableObjects.Editor	Patterns/Behavioural/Observer/ScriptableObjects/Editor/Vector3EventChannelSOEditor.cs	-	This event channel broadcasts and carries Vector3 payload
 VelocityTracker	class	MonoBehaviour	SombraStudios.Shared.Physics.VelocityTracker	Physics/VelocityTracker/VelocityTracker.cs	-	Tracks and smooths velocity over a specified duration using a sampling interval
 VFXPropertySO	class	StrategySO	SombraStudios.Shared.VFX.PropertySO	VFX/PropertySO/VFXPropertySO.cs	-	Abstract base class for VFX properties that can be applied to a VFX controller
-VideoRenderTextureClear	class	MonoBehaviour	SombraStudios.Shared.Video	Video/VideoRenderTextureClear.cs	-	Fix to issue: RenderTexture retaining last video player frame This happens when using the same render texture to play another video after...
+VideoRenderTextureClear	class	MonoBehaviour	SombraStudios.Shared.Video	Video/VideoRenderTextureClear.cs	UNITY_MODULE_VIDEO	Fix to issue: RenderTexture retaining last video player frame This happens when using the same render texture to play another video after...
 VisitorSO	class	ScriptableObject	SombraStudios.Shared.Patterns.Behavioural.Visitor	Patterns/Behavioural/Visitor/VisitorSO.cs	-	Abstract base class for visitors implemented as ScriptableObjects
 VisitorSO<T>	class	VisitorSO	SombraStudios.Shared.Patterns.Behavioural.Visitor	Patterns/Behavioural/Visitor/VisitorSO.cs	-	Generic abstract base class for visitors that visit specific types of visitable elements
 VoiceRecognition	class	MonoBehaviour	SombraStudios.Shared.Audio	Audio/VoiceRecognition.cs	!UNITY_WEBGL	Class to detect voice recognition through a list of keywords When recognized take an action

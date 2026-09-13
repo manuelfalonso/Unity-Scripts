@@ -20,3 +20,5 @@
   href: VFXPropertySO.md
 - name: Code Style Sheet
   href: CodeStyle.md
+- name: Steam Multiplayer Setup
+  href: SteamworksSetup.md

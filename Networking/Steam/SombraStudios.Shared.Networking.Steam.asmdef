@@ -1,0 +1,37 @@
+{
+    "name": "SombraStudios.Shared.Networking.Steam",
+    "rootNamespace": "SombraStudios.Shared.Networking.Steam",
+    "references": [
+        "SombraStudios.Shared.Networking",
+        "Unity.Netcode.Runtime",
+        "Facepunch Transport for Netcode for GameObjects"
+    ],
+    "includePlatforms": [
+        "Editor",
+        "LinuxStandalone64",
+        "macOSStandalone",
+        "WindowsStandalone32",
+        "WindowsStandalone64"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [
+        "FACEPUNCH_TRANSPORT"
+    ],
+    "versionDefines": [
+        {
+            "name": "com.unity.netcode.gameobjects",
+            "expression": "",
+            "define": "NETCODE_GAMEOBJECTS"
+        },
+        {
+            "name": "com.community.netcode.transport.facepunch",
+            "expression": "",
+            "define": "FACEPUNCH_TRANSPORT"
+        }
+    ],
+    "noEngineReferences": false
+}

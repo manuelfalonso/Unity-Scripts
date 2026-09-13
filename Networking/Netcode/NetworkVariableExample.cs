@@ -1,4 +1,4 @@
-#if REQUIRES_EXTERNAL_PACKAGE
+#if NETCODE_GAMEOBJECTS && DOTWEEN
 using Unity.Netcode;
 using UnityEngine;
 using DG.Tweening;
